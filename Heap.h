@@ -3,6 +3,8 @@
 
 class FullHeap{};
 
+#define DEFAULT_SIZE = 20;
+
 template<class T>
 class Heap {
 public:
@@ -17,8 +19,6 @@ private:
     int size;       // number of elements in the heap
     T *elements;  // array
 };
-
-
 
 #include "Heap.cpp"
 

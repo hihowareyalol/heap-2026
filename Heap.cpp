@@ -61,24 +61,21 @@ T Heap<T>::ReheapDown() {
     int rightInd = currInd*2 + 2;
     int maxChildInd;
 
-    while (currInd != btmInd)
+    while (currInd != btmInd && leftInd <= btmInd)
     {
-        if (leftInd == btmInd)
-        {
+        if (leftInd == btmInd) {
             /*if the bottom is the left child, then the
             right branch doesn't exist. Then the max child is */
             maxChildInd = leftInd;
-        }
-
-        if (elements[leftInd] > elements[rightInd])
-        {
+        } else if (elements[leftInd] > elements[rightInd]) {
             maxChildInd = leftInd;
-        } else
-        {
+        } else {
             maxChildInd = rightInd;
         }
 
         //compare curr w/ max child
+
+        //if we are smaller than the max child
         if (elements[currInd] < elements[maxChildInd])
         {
             swap(elements, currInd, maxChildInd);
@@ -88,6 +85,9 @@ T Heap<T>::ReheapDown() {
             //if we are bigger than the max
             break;
         }
+
+        leftInd = currInd*2 + 1;
+        rightInd = currInd*2 + 2;
 
     }
 
